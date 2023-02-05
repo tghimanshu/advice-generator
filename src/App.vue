@@ -15,6 +15,11 @@ export default {
         "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
     };
   },
+  methods: {
+    shuffleAdvice() {
+      console.log("Shuffling the Advice....");
+    },
+  },
 };
 </script>
 
@@ -29,7 +34,12 @@ export default {
       <span></span>
     </div>
 
-    <AdviceShuffle />
+    <!-- pass function to this new custom event -->
+    <AdviceShuffle @shuffle-advice="shuffleAdvice" />
+    <!-- The below way is also valid in vue but it should only be named like this here 
+      and kept the same in the import and components statements since it won't work otherwise 
+      (Since, hypens are not allowed in names) -->
+    <!-- <advice-shuffle /> -->
   </div>
 
   <!-- <div class="attribution">
