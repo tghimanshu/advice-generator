@@ -35,7 +35,10 @@ export default {
     </div>
 
     <!-- pass function to this new custom event -->
-    <AdviceShuffle @shuffle-advice="shuffleAdvice" />
+    <AdviceShuffle @shuffle-advice="shuffleAdvice">
+      <!-- If Anything Passed Here it will be replaced with slot -->
+      <!-- if nothing passed the content between slot tag will be the default content -->
+    </AdviceShuffle>
     <!-- The below way is also valid in vue but it should only be named like this here 
       and kept the same in the import and components statements since it won't work otherwise 
       (Since, hypens are not allowed in names) -->
