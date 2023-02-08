@@ -1,11 +1,13 @@
 <script>
 // Importing the Components
 import AdviceShuffle from "./components/AdviceShuffle.vue";
+// import BaseLayout from "./components/BaseLayout.vue";
 
 export default {
   // Compontents to be used in the Screen
   components: {
     AdviceShuffle,
+    // BaseLayout,
   },
   // Data To Be Show on Screen
   data() {
@@ -26,6 +28,12 @@ export default {
 <template>
   <div class="advice">
     <div class="advice_id">Advice #{{ id }}</div>
+
+    <!-- You can use layout using the below syntax -->
+    <!-- <BaseLayout>
+      <template v-slot:title>Yo! First Timer here</template>
+      <template v-slot:content>Layouts are cool</template>
+    </BaseLayout> -->
 
     <div class="advice_text">"{{ advice }}"</div>
 
