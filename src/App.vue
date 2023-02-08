@@ -32,7 +32,10 @@ export default {
     <!-- You can use layout using the below syntax -->
     <!-- <BaseLayout>
       <template v-slot:title>Yo! First Timer here</template>
-      <template v-slot:content>Layouts are cool</template>
+      <template v-slot:content>Layouts are cool</template> -->
+    <!-- You can use # instead of v-slot: -->
+    <!-- <template #title>Yo! First Timer here</template>
+      <template #content>Layouts are cool</template>
     </BaseLayout> -->
 
     <div class="advice_text">"{{ advice }}"</div>
