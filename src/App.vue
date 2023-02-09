@@ -13,21 +13,30 @@ export default {
   data() {
     return {
       id: 1,
-      advice:
-        "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
+      // advice:
+      //   "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
+      advice: {},
     };
   },
   methods: {
-    shuffleAdvice() {
-      console.log("Shuffling the Advice....");
+    async fetchAdvice() {
+      let data = await fetch("https://api.adviceslip.com/advice").then((res) =>
+        res.json()
+      );
+      this.advice = data.slip;
+      // console.log(this.advice);
     },
+  },
+  // LifeCycle Hook
+  created() {
+    this.fetchAdvice();
   },
 };
 </script>
 
 <template>
   <div class="advice">
-    <div class="advice_id">Advice #{{ id }}</div>
+    <div class="advice_id">Advice #{{ advice.id }}</div>
 
     <!-- You can use layout using the below syntax -->
     <!-- <BaseLayout>
@@ -38,7 +47,7 @@ export default {
       <template #content>Layouts are cool</template>
     </BaseLayout> -->
 
-    <div class="advice_text">"{{ advice }}"</div>
+    <div class="advice_text">"{{ advice.advice }}"</div>
 
     <div class="advice_divider">
       <span></span>
@@ -46,7 +55,7 @@ export default {
     </div>
 
     <!-- pass function to this new custom event -->
-    <AdviceShuffle @shuffle-advice="shuffleAdvice">
+    <AdviceShuffle @shuffle-advice="fetchAdvice">
       <!-- If Anything Passed Here it will be replaced with slot -->
       <!-- if nothing passed the content between slot tag will be the default content -->
     </AdviceShuffle>

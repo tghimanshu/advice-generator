@@ -19,3 +19,9 @@ export default {
     </slot>
   </div>
 </template>
+
+<style>
+.advice_refresh {
+  cursor: pointer;
+}
+</style>
