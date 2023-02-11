@@ -6,6 +6,12 @@ import {
   computed, // Creates a computed property
 } from "vue";
 
+/* 
+  Using Composition API (Setup Function) to do all the scripting
+  You can use ref, computed or reactive functions to replace data, computed and methods provided by options api 
+  this is mostly used by people who wants more control over the code using JavaScript
+*/
+
 export default {
   components: {
     AdviceShuffle,
