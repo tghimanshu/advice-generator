@@ -1,5 +1,7 @@
 <script>
-import TheAdvice from "./components/TheAdvice.vue";
+// import TheAdvice from "./components/TheAdvice.vue";
+import TheAdvice from "./components/TheAdviceCompositionScript.vue";
+// import TheAdvice from "./components/TheAdviceCompositionAPI.vue";
 export default {
   // Importing modules
   components: {
