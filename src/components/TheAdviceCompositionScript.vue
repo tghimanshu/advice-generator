@@ -1,13 +1,23 @@
+<!-- Composition API is flexible while Options API rigid  -->
+<!-- You dont need async for any async task since setup manages it itself -->
 <script setup>
 // no need for components of defination of options API
 import AdviceShuffle from "./AdviceShuffle.vue";
-import { reactive } from "vue";
+import { reactive, defineProps, defineEmits } from "vue";
 
 /* 
   Being in the script setup,
   You don't need to do export default or setup function since you already are inside the setup
   No need to return since Composition manages it automatically
 */
+const props = defineProps({
+  name: {
+    type: String,
+  },
+});
+console.log(props);
+
+const emits = defineEmits(["change-name"]);
 
 let advice = reactive({
   advice: "",
@@ -18,6 +28,8 @@ async function fetchAdvice() {
     res.json()
   );
   advice = data.slip;
+  // triggering the emmited function
+  emits("change-name");
 }
 let { slip } = await fetch("https://api.adviceslip.com/advice").then((res) =>
   res.json()
