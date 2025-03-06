@@ -1,6 +1,6 @@
 # learning-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+This is for learning Vue by creating an advice generator
 
 ## Recommended IDE Setup
 
