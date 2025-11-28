@@ -2,6 +2,15 @@
 // import TheAdvice from "./components/TheAdvice.vue";
 import TheAdvice from "./components/TheAdviceCompositionScript.vue";
 // import TheAdvice from "./components/TheAdviceCompositionAPI.vue";
+
+/**
+ * The root component of the application.
+ *
+ * This component acts as the container for the main application logic.
+ * It utilizes the `<Suspense>` built-in component to handle asynchronous component loading.
+ *
+ * @component
+ */
 export default {
   // Importing modules
   components: {

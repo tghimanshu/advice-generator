@@ -2,8 +2,6 @@
 import AdviceShuffle from "./AdviceShuffle.vue";
 import {
   reactive, // Make data reactive just like a normal options api code
-  ref, // Creates a reference of Options API
-  computed, // Creates a computed property
 } from "vue";
 
 /* 
@@ -12,15 +10,42 @@ import {
   this is mostly used by people who wants more control over the code using JavaScript
 */
 
+/**
+ * A component that displays advice using the Vue Composition API (`setup()` function).
+ *
+ * This component mirrors the functionality of `TheAdvice.vue` but implements logic entirely within
+ * the `setup` function, demonstrating reactive state and async data fetching without Options API data/methods blocks.
+ *
+ * @component
+ */
 export default {
   components: {
     AdviceShuffle,
   },
+  /**
+   * Initial component setup and logic.
+   *
+   * Initializes reactive state for advice, defines the `fetchAdvice` function, and performs the initial
+   * data fetch.
+   *
+   * @async
+   * @returns {Promise<Object>} A promise that resolves to an object containing:
+   *   - advice: {Object} The reactive advice object containing id and advice text.
+   *   - fetchAdvice: {Function} Method to refresh the advice from the API.
+   */
   async setup() {
     let advice = reactive({
       advice: "",
       id: 1,
     });
+
+    /**
+     * Fetches new advice from the API and updates the reactive `advice` object.
+     *
+     * @async
+     * @function fetchAdvice
+     * @returns {Promise<void>}
+     */
     async function fetchAdvice() {
       let data = await fetch("https://api.adviceslip.com/advice").then((res) =>
         res.json()
