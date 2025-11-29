@@ -9,6 +9,17 @@ import {
   computed, // Creates a computed property
 } from "vue";
 
+/**
+ * The main component for displaying advice using the Options API (mixed with some Composition API setup).
+ *
+ * This component fetches advice from the external API (https://api.adviceslip.com/advice)
+ * and displays it. It handles the 'shuffle-advice' event from the AdviceShuffle child component
+ * to refresh the advice.
+ *
+ * Note: This component demonstrates a mix of Options API and Composition API usage.
+ *
+ * @component
+ */
 export default {
   // Compontents to be used in the Screen
   components: {
@@ -16,6 +27,15 @@ export default {
     // BaseLayout,
   },
   // Composition API
+  /**
+   * Setup function for the Composition API part of this component.
+   *
+   * It performs an initial fetch of advice before the component is mounted (using async/await).
+   * It also demonstrates the creation of reactive references using ref, computed, and reactive.
+   *
+   * @async
+   * @returns {Promise<{slip: Object}>} A promise resolving to an object containing the initial advice slip.
+   */
   async setup() {
     console.log("The Composition API");
     // One of the best places to make request since it's before the component is mounted
@@ -37,6 +57,13 @@ export default {
   },
   // Data To Be Show on Screen
   // Options API
+  /**
+   * Returns the initial data for the component.
+   *
+   * @returns {Object} The data object containing:
+   *  - id: {number} A default ID.
+   *  - advice: {Object} The advice object fetched from the setup() hook.
+   */
   data() {
     return {
       id: 1,
@@ -46,6 +73,14 @@ export default {
     };
   },
   methods: {
+    /**
+     * Fetches a new piece of advice from the API.
+     *
+     * This method is asynchronous and updates the local 'advice' data property with the new advice slip.
+     *
+     * @async
+     * @returns {Promise<void>}
+     */
     async fetchAdvice() {
       let data = await fetch("https://api.adviceslip.com/advice").then((res) =>
         res.json()
